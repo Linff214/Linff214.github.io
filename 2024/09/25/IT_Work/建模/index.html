@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>小林小林爱编程 | 小林小林爱编程</title><meta name="author" content="Linff214"><meta name="copyright" content="Linff214"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Q2clc; clear all; close all;% 可行版本   k为三次多项式% 非线性回归%% 1. 加载数据Data &#x3D; readcell(&amp;#x27;附件一（训练集）.xlsx&amp;#x27;,&amp;#x27;Sheet&amp;#x27;,&amp;#x27;材料1&amp;#x27;);T &#x3D; cell2mat(Data(2:end, 1));    % 温度f &#x3D; cell2mat(Data(2:end,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小林小林爱编程">
+<meta property="og:url" content="https://linff214.github.io/2024/09/25/IT_Work/%E5%BB%BA%E6%A8%A1/index.html">
+<meta property="og:site_name" content="小林小林爱编程">
+<meta property="og:description" content="Q2clc; clear all; close all;% 可行版本   k为三次多项式% 非线性回归%% 1. 加载数据Data &#x3D; readcell(&amp;#x27;附件一（训练集）.xlsx&amp;#x27;,&amp;#x27;Sheet&amp;#x27;,&amp;#x27;材料1&amp;#x27;);T &#x3D; cell2mat(Data(2:end, 1));    % 温度f &#x3D; cell2mat(Data(2:end,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linff214.github.io/img/%E5%A4%B4%E5%83%8F.jpg">
+<meta property="article:published_time" content="2024-09-24T17:13:25.417Z">
+<meta property="article:modified_time" content="2024-09-24T20:19:37.960Z">
+<meta property="article:author" content="Linff214">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linff214.github.io/img/%E5%A4%B4%E5%83%8F.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://linff214.github.io/2024/09/25/IT_Work/%E5%BB%BA%E6%A8%A1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Linff214","link":"链接: ","source":"来源: 小林小林爱编程","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '小林小林爱编程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-25 04:19:37'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/essay.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/%E5%A4%B4%E5%83%8F.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-folder-open"></i><span> 小林的朋友圈</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/%E8%83%8C%E6%99%AF3.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="小林小林爱编程"><span class="site-name">小林小林爱编程</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-folder-open"></i><span> 小林的朋友圈</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-24T17:13:25.417Z" title="发表于 2024-09-25 01:13:25">2024-09-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-24T20:19:37.960Z" title="更新于 2024-09-25 04:19:37">2024-09-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Q2"><a href="#Q2" class="headerlink" title="Q2"></a>Q2</h1><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clc; clear all; close all;</span><br><span class="line"><span class="comment">% 可行版本   k为三次多项式</span></span><br><span class="line"><span class="comment">% 非线性回归</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 1. 加载数据</span></span><br><span class="line">Data = readcell(<span class="string">&#x27;附件一（训练集）.xlsx&#x27;</span>,<span class="string">&#x27;Sheet&#x27;</span>,<span class="string">&#x27;材料1&#x27;</span>);</span><br><span class="line">T = cell2mat(Data(<span class="number">2</span>:<span class="keyword">end</span>, <span class="number">1</span>));    <span class="comment">% 温度</span></span><br><span class="line">f = cell2mat(Data(<span class="number">2</span>:<span class="keyword">end</span>, <span class="number">2</span>));    <span class="comment">% 频率</span></span><br><span class="line">Pc_exp = cell2mat(Data(<span class="number">2</span>:<span class="keyword">end</span>, <span class="number">3</span>)); <span class="comment">% 磁芯损耗</span></span><br><span class="line">waveform = Data(<span class="number">2</span>:<span class="keyword">end</span>, <span class="number">4</span>);       <span class="comment">% 励磁波形类型</span></span><br><span class="line">B_waveform = cell2mat(Data(<span class="number">2</span>:<span class="keyword">end</span>, <span class="number">5</span>:<span class="keyword">end</span>)); <span class="comment">% 磁通密度采样点（1024个）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 2. 标签编码：将励磁波形的文字标签转换为数值标签</span></span><br><span class="line"><span class="comment">% 1 = 正弦波, 2 = 三角波, 3 = 梯形波</span></span><br><span class="line">waveform_labels = Data(<span class="number">2</span>:<span class="keyword">end</span>, <span class="number">4</span>);</span><br><span class="line">label_mapping = containers.Map(&#123;<span class="string">&#x27;正弦波&#x27;</span>, <span class="string">&#x27;三角波&#x27;</span>, <span class="string">&#x27;梯形波&#x27;</span>&#125;, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line">numeric_labels = <span class="built_in">cellfun</span>(@(x) label_mapping(x), waveform_labels); <span class="comment">% 将标签映射为数值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 3. 提取需要的变量</span></span><br><span class="line">idx_sine = strcmp(waveform, <span class="string">&#x27;正弦波&#x27;</span>); <span class="comment">% 筛选出正弦波形的数据</span></span><br><span class="line">T_sine = T(idx_sine);     <span class="comment">% 温度</span></span><br><span class="line">f_sine = f(idx_sine);     <span class="comment">% 频率</span></span><br><span class="line">Pc_exp_sine = Pc_exp(idx_sine);   <span class="comment">% 磁芯损耗</span></span><br><span class="line">B_waveform_sine = B_waveform(idx_sine, :); <span class="comment">% 磁通密度</span></span><br><span class="line">Bmax = <span class="built_in">max</span>(<span class="built_in">abs</span>(B_waveform_sine), [], <span class="number">2</span>);   <span class="comment">% 磁通密度峰值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 4. 按温度进行分类</span></span><br><span class="line"><span class="comment">% 获取唯一的温度值</span></span><br><span class="line">unique_temperatures = unique(T_sine);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 初始化一个结构体来存储分类数据</span></span><br><span class="line">grouped_data_by_temperature = struct();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="built_in">length</span>(unique_temperatures)</span><br><span class="line">    current_temp = unique_temperatures(<span class="built_in">i</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 找到当前温度下的索引</span></span><br><span class="line">    idx_current_temp = T_sine == current_temp;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 存储当前温度下的数据</span></span><br><span class="line">    grouped_data_by_temperature(<span class="built_in">i</span>).temperature = current_temp;</span><br><span class="line">    grouped_data_by_temperature(<span class="built_in">i</span>).frequency = f_sine(idx_current_temp);</span><br><span class="line">    grouped_data_by_temperature(<span class="built_in">i</span>).Pc_exp = Pc_exp_sine(idx_current_temp);</span><br><span class="line">    grouped_data_by_temperature(<span class="built_in">i</span>).B_waveform = B_waveform_sine(idx_current_temp, :);</span><br><span class="line">    grouped_data_by_temperature(<span class="built_in">i</span>).Bmax = Bmax(idx_current_temp);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 显示按温度分类后的数据</span></span><br><span class="line"><span class="built_in">disp</span>(grouped_data_by_temperature);</span><br><span class="line"></span><br><span class="line"><span class="comment">%% 5. 针对每个温度拟合磁芯损耗公式的参数</span></span><br><span class="line">fit_params_by_temperature = struct();</span><br><span class="line"></span><br><span class="line"><span class="comment">% 定义损耗公式：P_c = k * f^alpha * Bmax^beta</span></span><br><span class="line">steinmetz_fun = @(params, f, Bmax) params(<span class="number">1</span>) * f.^params(<span class="number">2</span>) .* Bmax.^params(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 遍历每个温度，进行拟合</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="built_in">length</span>(unique_temperatures)</span><br><span class="line">    x0 = [<span class="number">1</span>, <span class="number">1.5</span>, <span class="number">2.5</span>]; <span class="comment">% 初始值</span></span><br><span class="line">    current_temp = unique_temperatures(<span class="built_in">i</span>); <span class="comment">% 提取当前温度</span></span><br><span class="line">    f_current = grouped_data_by_temperature(<span class="built_in">i</span>).frequency;</span><br><span class="line">    Bmax_current = grouped_data_by_temperature(<span class="built_in">i</span>).Bmax;</span><br><span class="line">    Pc_exp_current = grouped_data_by_temperature(<span class="built_in">i</span>).Pc_exp;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 使用匿名函数传递 f 和 Bmax</span></span><br><span class="line">    x_traditional = lsqcurvefit(@(params, f) steinmetz_fun(params, f(:,<span class="number">1</span>), f(:,<span class="number">2</span>)), x0, [f_current, Bmax_current], Pc_exp_current);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 提取拟合的参数</span></span><br><span class="line">    k = x_traditional(<span class="number">1</span>);</span><br><span class="line">    alpha = x_traditional(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">beta</span> = x_traditional(<span class="number">3</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 保存拟合结果</span></span><br><span class="line">    fit_params_by_temperature(<span class="built_in">i</span>).temperature = current_temp;</span><br><span class="line">    fit_params_by_temperature(<span class="built_in">i</span>).k = k;</span><br><span class="line">    fit_params_by_temperature(<span class="built_in">i</span>).alpha = alpha;</span><br><span class="line">    fit_params_by_temperature(<span class="built_in">i</span>).<span class="built_in">beta</span> = <span class="built_in">beta</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 显示拟合结果</span></span><br><span class="line"><span class="built_in">disp</span>(fit_params_by_temperature);</span><br><span class="line"></span><br><span class="line"><span class="comment">%% 6. 绘制不同温度下的预测损耗与实际损耗的对比图</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 遍历每个温度，绘图</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="built_in">length</span>(unique_temperatures)</span><br><span class="line">    current_temp = unique_temperatures(<span class="built_in">i</span>);</span><br><span class="line">    f_current = grouped_data_by_temperature(<span class="built_in">i</span>).frequency;</span><br><span class="line">    Bmax_current = grouped_data_by_temperature(<span class="built_in">i</span>).Bmax;</span><br><span class="line">    Pc_exp_current = grouped_data_by_temperature(<span class="built_in">i</span>).Pc_exp;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 使用拟合的参数计算预测损耗</span></span><br><span class="line">    k_fit = fit_params_by_temperature(<span class="built_in">i</span>).k;</span><br><span class="line">    alpha_fit = fit_params_by_temperature(<span class="built_in">i</span>).alpha;</span><br><span class="line">    beta_fit = fit_params_by_temperature(<span class="built_in">i</span>).<span class="built_in">beta</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 预测的磁芯损耗</span></span><br><span class="line">    Pc_pred = k_fit * f_current.^alpha_fit .* Bmax_current.^beta_fit;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 绘制实际和预测损耗</span></span><br><span class="line">    <span class="built_in">plot</span>(Pc_exp_current, Pc_pred, <span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;DisplayName&#x27;</span>, [<span class="string">&#x27;温度: &#x27;</span>, num2str(current_temp), <span class="string">&#x27;°C&#x27;</span>]);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 绘制斜率为1的对角线，用于对比预测值和实际值</span></span><br><span class="line">x_min = <span class="built_in">min</span>([Pc_exp_current; Pc_pred]); <span class="comment">% 确定横轴最小值</span></span><br><span class="line">x_max = <span class="built_in">max</span>([Pc_exp_current; Pc_pred]); <span class="comment">% 确定横轴最大值</span></span><br><span class="line"><span class="built_in">plot</span>([x_min, x_max], [x_min, x_max], <span class="string">&#x27;r--&#x27;</span>, <span class="string">&#x27;DisplayName&#x27;</span>, <span class="string">&#x27;理想线 y=x&#x27;</span>); <span class="comment">% 添加y=x的对角线</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">% 图形设置</span></span><br><span class="line">xlabel(<span class="string">&#x27;实际磁芯损耗 P_c (W)&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;预测磁芯损耗 P_c (W)&#x27;</span>);</span><br><span class="line">title(<span class="string">&#x27;不同温度下实际与预测磁芯损耗对比&#x27;</span>);</span><br><span class="line"><span class="built_in">legend</span> show;</span><br><span class="line">grid on;</span><br><span class="line">axis equal; <span class="comment">% 保证坐标轴比例一致</span></span><br><span class="line"><span class="built_in">hold</span> off;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 7. 损耗公式 P_c(T) = k(T) * f^alpha * Bmax^beta</span></span><br><span class="line"><span class="comment">% 其中 k(T) = k0 * (1 + c1 * T + c2 * T^2 + c3 * T^3))</span></span><br><span class="line">T_f_Bmax = [T_sine, f_sine, Bmax]; <span class="comment">% 将温度、频率、Bmax 组合成一个矩阵</span></span><br><span class="line">Pc_exp_data = Pc_exp_sine;         <span class="comment">% 使用实验得到的磁芯损耗作为目标值</span></span><br><span class="line">loss_function = @(params, T_f_Bmax) params(<span class="number">1</span>) * (<span class="number">1</span> + params(<span class="number">2</span>) * T_f_Bmax(:,<span class="number">1</span>) + ...</span><br><span class="line">                                     params(<span class="number">3</span>) * T_f_Bmax(:,<span class="number">1</span>).^<span class="number">2</span> + ...</span><br><span class="line">                                     params(<span class="number">4</span>) * T_f_Bmax(:,<span class="number">1</span>).^<span class="number">3</span>) .* ...</span><br><span class="line">                                     T_f_Bmax(:,<span class="number">2</span>).^ params(<span class="number">5</span>) .* ...</span><br><span class="line">                                     T_f_Bmax(:,<span class="number">3</span>).^ params(<span class="number">6</span>);</span><br><span class="line"></span><br><span class="line">initial_guess = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2.5</span>, <span class="number">2.0</span>]; <span class="comment">% 初始猜测参数 [k0, c1, c2, c3, alpha, beta]</span></span><br><span class="line">options = optimset(<span class="string">&#x27;Display&#x27;</span>,<span class="string">&#x27;iter&#x27;</span>,<span class="string">&#x27;TolFun&#x27;</span>,<span class="number">1e-8</span>); <span class="comment">% 设置拟合选项</span></span><br><span class="line">[params_fit, resnorm] = lsqcurvefit(loss_function, initial_guess, T_f_Bmax, Pc_exp_data, [], [], options); <span class="comment">% 使用非线性最小二乘法拟合</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 8. 显示拟合结果，绘制拟合结果与实际损耗对比图</span></span><br><span class="line"><span class="built_in">disp</span>(<span class="string">&#x27;拟合参数：&#x27;</span>);</span><br><span class="line"><span class="built_in">disp</span>([<span class="string">&#x27;k0 = &#x27;</span>, num2str(params_fit(<span class="number">1</span>))]);</span><br><span class="line"><span class="built_in">disp</span>([<span class="string">&#x27;c1 = &#x27;</span>, num2str(params_fit(<span class="number">2</span>))]);</span><br><span class="line"><span class="built_in">disp</span>([<span class="string">&#x27;c2 = &#x27;</span>, num2str(params_fit(<span class="number">3</span>))]);</span><br><span class="line"><span class="built_in">disp</span>([<span class="string">&#x27;c3 = &#x27;</span>, num2str(params_fit(<span class="number">4</span>))]);</span><br><span class="line"><span class="built_in">disp</span>([<span class="string">&#x27;alpha = &#x27;</span>, num2str(params_fit(<span class="number">5</span>))]);</span><br><span class="line"><span class="built_in">disp</span>([<span class="string">&#x27;beta = &#x27;</span>, num2str(params_fit(<span class="number">6</span>))]);</span><br><span class="line"></span><br><span class="line">Pc_pred = loss_function(params_fit, T_f_Bmax); <span class="comment">% 计算预测的损耗</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line"><span class="built_in">plot</span>(Pc_exp_data, Pc_pred, <span class="string">&#x27;*&#x27;</span>); <span class="built_in">hold</span> on; <span class="comment">% 实际损耗 vs 预测损耗</span></span><br><span class="line">xlabel(<span class="string">&#x27;实际磁芯损耗 (W)&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;预测磁芯损耗 (W)&#x27;</span>);</span><br><span class="line">title(<span class="string">&#x27;实际与预测磁芯损耗对比&#x27;</span>);</span><br><span class="line">grid on;</span><br><span class="line"><span class="comment">% 绘制斜率为1的对角线，用于对比预测值和实际值</span></span><br><span class="line">x_min = <span class="built_in">min</span>([Pc_exp_current; Pc_pred]); <span class="comment">% 确定横轴最小值</span></span><br><span class="line">x_max = <span class="built_in">max</span>([Pc_exp_current; Pc_pred]); <span class="comment">% 确定横轴最大值</span></span><br><span class="line"><span class="built_in">plot</span>([x_min, x_max], [x_min, x_max], <span class="string">&#x27;r--&#x27;</span>, <span class="string">&#x27;DisplayName&#x27;</span>, <span class="string">&#x27;理想线 y=x&#x27;</span>); <span class="comment">% 添加y=x的对角线</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 评价指标</span></span><br><span class="line"><span class="comment">% 计算均方误差 (MSE)</span></span><br><span class="line">MSE = <span class="built_in">mean</span>((Pc_exp_data - Pc_pred).^<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 计算平均绝对误差 (MAE)</span></span><br><span class="line">MAE = <span class="built_in">mean</span>(<span class="built_in">abs</span>(Pc_exp_data - Pc_pred));</span><br><span class="line"></span><br><span class="line"><span class="comment">% 计算拟合优度 (R²)</span></span><br><span class="line">SS_res = sum((Pc_exp_data - Pc_pred).^<span class="number">2</span>); <span class="comment">% 残差平方和</span></span><br><span class="line">SS_tot = sum((Pc_exp_data - <span class="built_in">mean</span>(Pc_exp_data)).^<span class="number">2</span>); <span class="comment">% 总平方和</span></span><br><span class="line">R_squared = <span class="number">1</span> - (SS_res / SS_tot);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 显示结果</span></span><br><span class="line">fprintf(<span class="string">&#x27;MSE: %.4f\n&#x27;</span>, MSE);</span><br><span class="line">fprintf(<span class="string">&#x27;MAE: %.4f\n&#x27;</span>, MAE);</span><br><span class="line">fprintf(<span class="string">&#x27;R-squared: %.4f\n&#x27;</span>, R_squared);</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Linff214.github.io">Linff214</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linff214.github.io/2024/09/25/IT_Work/%E5%BB%BA%E6%A8%A1/">https://linff214.github.io/2024/09/25/IT_Work/%E5%BB%BA%E6%A8%A1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Linff214.github.io" target="_blank">小林小林爱编程</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/%E5%A4%B4%E5%83%8F.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/10/12/Rust-Lab/" title="Rust_Lab"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Rust_Lab</div></div></a></div><div class="next-post pull-right"><a href="/2024/08/13/Paper_Work/CT%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA%E7%AE%97%E6%B3%95/" title="CT图像重建算法"><img class="cover" src="/img/19.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CT图像重建算法</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81OTc3Mi8zNjIzNA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Linff214</div><div class="author-info__description">纵有疾风来，人生不言弃</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Linff214"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Linff214" target="_blank" title="Github"><i class="fab fa-github" style="color: #hdhfbb;"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #000000;"></i></a><a class="social-icon" href="/blog.Linff214.com" target="_blank" title="博客"><i class="fa-solid fa-layer-group"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Q2"><span class="toc-number">1.</span> <span class="toc-text">Q2</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/02/Go-basic/" title="Go_basic">Go_basic</a><time datetime="2024-11-02T09:45:24.000Z" title="发表于 2024-11-02 17:45:24">2024-11-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/12/Rust-Lab/" title="Rust_Lab">Rust_Lab</a><time datetime="2024-10-12T14:22:17.000Z" title="发表于 2024-10-12 22:22:17">2024-10-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/25/IT_Work/%E5%BB%BA%E6%A8%A1/" title="无题">无题</a><time datetime="2024-09-24T17:13:25.417Z" title="发表于 2024-09-25 01:13:25">2024-09-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/13/Paper_Work/CT%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA%E7%AE%97%E6%B3%95/" title="CT图像重建算法"><img src="/img/19.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CT图像重建算法"/></a><div class="content"><a class="title" href="/2024/08/13/Paper_Work/CT%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA%E7%AE%97%E6%B3%95/" title="CT图像重建算法">CT图像重建算法</a><time datetime="2024-08-13T12:44:39.000Z" title="发表于 2024-08-13 20:44:39">2024-08-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/08/Personal_Record/%E5%AE%9A%E6%9C%9F%E6%80%BB%E7%BB%93-%E7%A0%94%E4%B8%80/" title="定期总结---研一"><img src="/img/18.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="定期总结---研一"/></a><div class="content"><a class="title" href="/2024/08/08/Personal_Record/%E5%AE%9A%E6%9C%9F%E6%80%BB%E7%BB%93-%E7%A0%94%E4%B8%80/" title="定期总结---研一">定期总结---研一</a><time datetime="2024-08-08T10:27:00.000Z" title="发表于 2024-08-08 18:27:00">2024-08-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Linff214</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><img class="icp-icon" src= "/img/头像.jpg"><span>欢迎来到我的博客😈</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(()=>{
+  const loadLivere = () => {
+    if (typeof LivereTower === 'object') window.LivereTower.init()
+    else {
+      (function(d, s) {
+          var j, e = d.getElementsByTagName(s)[0];
+          if (typeof LivereTower === 'function') { return; }
+          j = d.createElement(s);
+          j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+          j.async = true;
+          e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    }
+  }
+
+  if ('Livere' === 'Livere' || !false) {
+    if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+    else loadLivere()
+  } else {
+    window.loadOtherComment = loadLivere
+  }
+})()</script></div><script async data-pjax src="/js/essay.js"></script><script async data-pjax src="/js/waterfall.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
