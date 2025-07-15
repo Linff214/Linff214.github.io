@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ChatNova——配置grpc客户端服务器VerifyServer | 小林小林爱编程</title><meta name="author" content="Linff214"><meta name="copyright" content="Linff214"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Grpc服务器gRPC是Google开发的一种高性能、开源的远程过程调用（RPC）框架。它可以让客户端应用程序像调用本地服务一样轻松地调用远程服务，并提供了多种语言的支持，如C++、Java、Python、Go等。gRPC使用Protocol Buffers作为数据格式，可以在不同的平台上进行应用程序之间的通信，支持多种编程语言和多种操作系统。它采用基于HTTP&#x2F;2的协议，提供了高效、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ChatNova——配置grpc客户端服务器VerifyServer">
+<meta property="og:url" content="https://linff214.github.io/2025/07/15/ChatNova%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AEgrpc%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8VerifyServer/index.html">
+<meta property="og:site_name" content="小林小林爱编程">
+<meta property="og:description" content="Grpc服务器gRPC是Google开发的一种高性能、开源的远程过程调用（RPC）框架。它可以让客户端应用程序像调用本地服务一样轻松地调用远程服务，并提供了多种语言的支持，如C++、Java、Python、Go等。gRPC使用Protocol Buffers作为数据格式，可以在不同的平台上进行应用程序之间的通信，支持多种编程语言和多种操作系统。它采用基于HTTP&#x2F;2的协议，提供了高效、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linff214.github.io/img/chatnova.jpg">
+<meta property="article:published_time" content="2025-07-15T07:55:33.000Z">
+<meta property="article:modified_time" content="2025-07-15T07:57:32.654Z">
+<meta property="article:author" content="Linff214">
+<meta property="article:tag" content="项目3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linff214.github.io/img/chatnova.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://linff214.github.io/2025/07/15/ChatNova%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AEgrpc%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8VerifyServer/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Linff214","link":"链接: ","source":"来源: 小林小林爱编程","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ChatNova——配置grpc客户端服务器VerifyServer',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-07-15 15:57:32'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/essay.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/%E5%A4%B4%E5%83%8F.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-folder-open"></i><span> 小林的朋友圈</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/chatnova.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="小林小林爱编程"><span class="site-name">小林小林爱编程</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-folder-open"></i><span> 小林的朋友圈</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ChatNova——配置grpc客户端服务器VerifyServer</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-07-15T07:55:33.000Z" title="发表于 2025-07-15 15:55:33">2025-07-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-15T07:57:32.654Z" title="更新于 2025-07-15 15:57:32">2025-07-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E4%BD%9C-%E9%A1%B9%E7%9B%AE/">工作/项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ChatNova——配置grpc客户端服务器VerifyServer"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="https://cdn.jsdelivr.net/gh/Linff214/picodemo/img/f254439bb8824c75bd6d1792c6b6e9ce.jpeg" alt="在这里插入图片描述"></p>
+<h1 id="Grpc服务器"><a href="#Grpc服务器" class="headerlink" title="Grpc服务器"></a>Grpc服务器</h1><p><img src="https://cdn.jsdelivr.net/gh/Linff214/picodemo/img/6a3dd3f403e24df09e039ac5b806ebe4.jpeg" alt="在这里插入图片描述"><br><strong>gRPC</strong>是Google开发的一种高性能、开源的远程过程调用（RPC）框架。它可以让客户端应用程序像调用本地服务一样轻松地调用远程服务，并提供了多种语言的支持，如C++、Java、Python、Go等。<br>gRPC使用Protocol Buffers作为数据格式，可以在不同的平台上进行应用程序之间的通信，支持多种编程语言和多种操作系统。它采用基于HTTP&#x2F;2的协议，提供了高效、快速且可扩展的远程调用功能，并带有负载均衡、认证、监控等功能，方便用户管理和维护分布式系统。<br>gRPC 使用<strong>Protocol Buffers</strong>（protobuf）作为接口定义语言（IDL）来定义消息和服务。protobuf 是 Google 开发的一个语言中立、平台中立的序列化数据格式。<br>**Protocol Buffers (Protobuf)**：协议缓冲区 （Protobuf）：<br>Protocol Buffers 是一种轻量级的、语言中立、平台中立的序列化结构化数据的方法。</p>
+<ul>
+<li><strong>序列化</strong>是将数据结构（如对象）转换为字节流的过程，使其可以存储或通过网络传输。</li>
+<li><strong>反序列化</strong>是从字节流中恢复原始数据结构的过程。</li>
+</ul>
+<h2 id="proto文件编写"><a href="#proto文件编写" class="headerlink" title="proto文件编写"></a>proto文件编写</h2><p>在项目的根目录下创建一个proto名字为message.proto</p>
+<blockquote>
+<p>定义了一个 message.proto 文件，它描述了<strong>服务</strong>（VarifyService）<strong>和消息</strong>（GetVarifyReq、GetVarifyRsp）。该文件是服务接口和消息格式的“合同”</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">syntax = <span class="string">&quot;proto3&quot;</span>;<span class="comment">//表示使用的是 Protocol Buffers 第3版</span></span><br><span class="line"></span><br><span class="line">package message;<span class="comment">//声明这个 proto 文件的包名为</span></span><br><span class="line"></span><br><span class="line">service VarifyService &#123;</span><br><span class="line">  <span class="function">rpc <span class="title">GetVarifyCode</span> <span class="params">(GetVarifyReq)</span> <span class="title">returns</span> <span class="params">(GetVarifyRsp)</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message GetVarifyReq &#123;</span><br><span class="line">  string email = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message GetVarifyRsp &#123;</span><br><span class="line">  int32 error = <span class="number">1</span>;</span><br><span class="line">  string email = <span class="number">2</span>;</span><br><span class="line">  string code = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>service VarifyService &#123;   rpc GetVarifyCode (GetVarifyReq) returns (GetVarifyRsp) &#123;&#125; &#125;</code></p>
+<ul>
+<li>定义了一个叫做 VarifyService 的服务；</li>
+<li>这个服务有一个远程方法 GetVarifyCode，参数是 GetVarifyReq，返回是 GetVarifyRsp；</li>
+<li>这个服务接口可以用于 gRPC 框架生成 服务端 和 客户端 的接口代码，进行远程调用。</li>
+</ul>
+<p><strong>Client</strong><br> ↓<br><strong>构造</strong> <code>GetVarifyReq(email=&quot;abc@example.com&quot;)</code><br> ↓<br><code>stub.GetVarifyCode(req)</code> ——[<strong>gRPC底层自动发网络请求</strong>]→<br> ↓<br><strong>Server 解析请求</strong> → 执行逻辑 → 返回 GetVarifyRsp<br> ↓<br><strong>Client 收到响应</strong>（error&#x3D;0, code&#x3D;”8391”）</p>
+<blockquote>
+<p>Protobuf 是通过字段编号（如 1, 2, 3）来传输和识别数据的字段，不传字段名，所以相比 JSON 更高效。</p>
+</blockquote>
+<p>在当前GateServer项目下用终端打开，利用grpc进行编译</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">F:\<span class="number">04</span>Code\cppsoft\grpc\visualpro\third_party\protobuf\Debug\protoc.exe  -I=<span class="string">&quot;.&quot;</span> --grpc_out=<span class="string">&quot;.&quot;</span> --plugin=protoc-gen-grpc=<span class="string">&quot;F:\04Code\cppsoft\grpc\visualpro\Debug\grpc_cpp_plugin.exe&quot;</span> <span class="string">&quot;message.proto&quot;</span></span><br></pre></td></tr></table></figure>
+<p>编译后生成grpc.pb.h和grpc.pb.cc文件，保存了用grpc通信的接口,但是通信接口所用的参数需要额外生成；<br><img src="https://i-blog.csdnimg.cn/direct/3dd82d7263bb4155bb8a963b46f72212.png" alt="在这里插入图片描述"></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">F:\<span class="number">04</span>Code\cppsoft\grpc\visualpro\third_party\protobuf\Debug\protoc.exe --cpp_out=. <span class="string">&quot;message.proto&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Linff214/picodemo/img/4de67ce2d14e4be9acbef8011369f261.png" alt="在这里插入图片描述"></p>
+<h1 id="Grpc客户端"><a href="#Grpc客户端" class="headerlink" title="Grpc客户端"></a>Grpc客户端</h1><blockquote>
+<p>这段代码实现了一个 <strong>gRPC 客户端</strong> 和一个 <strong>HTTP 请求</strong>处理逻辑，主要功能是通过 HTTP 接收验证码请求，并通过 gRPC 客户端调用远程服务获取验证码。</p>
+</blockquote>
+<h2 id="VarifyGrpcClient"><a href="#VarifyGrpcClient" class="headerlink" title="VarifyGrpcClient"></a>VarifyGrpcClient</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;grpcpp/grpcpp.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;message.grpc.pb.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;const.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Singleton.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> grpc::Channel;</span><br><span class="line"><span class="keyword">using</span> grpc::Status;</span><br><span class="line"><span class="keyword">using</span> grpc::ClientContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> message::GetVarifyReq;</span><br><span class="line"><span class="keyword">using</span> message::GetVarifyRsp;</span><br><span class="line"><span class="keyword">using</span> message::VarifyService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">VerifyGrpcClient</span>:<span class="keyword">public</span> Singleton&lt;VerifyGrpcClient&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">class</span> <span class="title class_">Singleton</span>&lt;VerifyGrpcClient&gt;;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//客户端接口函数，用于向远程 gRPC 服务请求验证码。</span></span><br><span class="line">    <span class="function">GetVarifyRsp <span class="title">GetVarifyCode</span><span class="params">(std::string email)</span> </span>&#123;</span><br><span class="line">        ClientContext context;</span><br><span class="line">        GetVarifyRsp reply;</span><br><span class="line">        GetVarifyReq request;</span><br><span class="line">        request.<span class="built_in">set_email</span>(email);</span><br><span class="line"><span class="comment">//通过客户端存根 (stub_) 调用远程服务的 GetVarifyCode 方法。</span></span><br><span class="line">        Status status = stub_-&gt;<span class="built_in">GetVarifyCode</span>(&amp;context, request, &amp;reply);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (status.<span class="built_in">ok</span>()) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> reply;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            reply.<span class="built_in">set_error</span>(ErrorCodes::RPCFailed);</span><br><span class="line">            <span class="keyword">return</span> reply;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">VerifyGrpcClient</span>() &#123;</span><br><span class="line">        std::shared_ptr&lt;Channel&gt; channel = grpc::<span class="built_in">CreateChannel</span>(<span class="string">&quot;127.0.0.1:50051&quot;</span>, grpc::<span class="built_in">InsecureChannelCredentials</span>());</span><br><span class="line">        stub_ = VarifyService::<span class="built_in">NewStub</span>(channel);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    std::unique_ptr&lt;VarifyService::Stub&gt; stub_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong><code>VerifyGrpcClient() </code>构造函数</strong>：</p>
+<p>通过 grpc::CreateChannel() 创建一个 gRPC 通道，连接到本地的 127.0.0.1:50051 地址。这是你 gRPC 服务器的 IP 地址和端口。</p>
+<p>使用 grpc::InsecureChannelCredentials() 创建一个<strong>不加密的通道</strong>（适用于本地测试）。在生产环境中，你可能使用加密通道。</p>
+<p>通过 VarifyService::NewStub(channel) 创建一个 VarifyService 的客户端存根（stub），它是与 gRPC 服务进行通信的接口。<br>post请求获取验证码的逻辑里添加处理<br><code>VarifyService::Stub</code></p>
+<blockquote>
+<p>在 gRPC 中，Stub 是一个客户端接口类，它定义了如何调用远程服务的所有方法。它负责<strong>将客户端请求封装成远程调用</strong>（RPC）并将结果返回给客户端。</p>
+<ul>
+<li>Stub 类是由 protoc 编译器根据 .proto 文件自动生成的。</li>
+<li>Stub 类中的方法直接对应于在 .proto 文件中定义的 RPC 方法。这些方法会通过网络与远服务器进行通信，发送请求并接收响应。</li>
+<li>每个 Stub 都会为每个 RPC 方法提供一个对应的函数，例如，在你的例子中，VarifyService::Stub 会有一个 GetVarifyCode 函数。</li>
+</ul>
+<p><code>VarifyService::NewStub</code><br>VarifyService::NewStub 是一个 工厂方法，用于创建一个 Stub 对象，它将负责客户端与 gRPC 服务端的通信。你可以通过这个方法来初始化一个 Stub 实例，从而与服务端进行 RPC 调用。</p>
+</blockquote>
+<p><code>RegPost</code>用于注册一个 POST 请求的回调函数，当客户端发起请求时，这个回调函数就会执行。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">RegPost</span>(<span class="string">&quot;/get_varifycode&quot;</span>, [](std::shared_ptr&lt;HttpConnection&gt; connection) &#123;</span><br><span class="line"><span class="comment">// 用来将 HTTP 请求体的数据转换成字符串。</span></span><br><span class="line">    <span class="keyword">auto</span> body_str = boost::beast::<span class="built_in">buffers_to_string</span>(connection-&gt;_request.<span class="built_in">body</span>().<span class="built_in">data</span>());</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;receive body is &quot;</span> &lt;&lt; body_str &lt;&lt; std::endl;</span><br><span class="line">    connection-&gt;_response.<span class="built_in">set</span>(http::field::content_type, <span class="string">&quot;text/json&quot;</span>);</span><br><span class="line">    Json::Value root;</span><br><span class="line">    Json::Reader reader;</span><br><span class="line">    Json::Value src_root;</span><br><span class="line">    <span class="type">bool</span> parse_success = reader.<span class="built_in">parse</span>(body_str, src_root);</span><br><span class="line">    <span class="keyword">if</span> (!parse_success) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Failed to parse JSON data!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        root[<span class="string">&quot;error&quot;</span>] = ErrorCodes::Error_Json;</span><br><span class="line">        std::string jsonstr = root.<span class="built_in">toStyledString</span>();</span><br><span class="line">        beast::<span class="built_in">ostream</span>(connection-&gt;_response.<span class="built_in">body</span>()) &lt;&lt; jsonstr;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> email = src_root[<span class="string">&quot;email&quot;</span>].<span class="built_in">asString</span>();</span><br><span class="line">    <span class="comment">//调用 VerifyGrpcClient 的 GetVarifyCode 方法，通过 gRPC 获取验证码。</span></span><br><span class="line">    GetVarifyRsp rsp = VerifyGrpcClient::<span class="built_in">GetInstance</span>()-&gt;<span class="built_in">GetVarifyCode</span>(email);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;email is &quot;</span> &lt;&lt; email &lt;&lt; endl;</span><br><span class="line">    root[<span class="string">&quot;error&quot;</span>] = rsp.<span class="built_in">error</span>();</span><br><span class="line">    root[<span class="string">&quot;email&quot;</span>] = src_root[<span class="string">&quot;email&quot;</span>];</span><br><span class="line">    std::string jsonstr = root.<span class="built_in">toStyledString</span>();</span><br><span class="line">    beast::<span class="built_in">ostream</span>(connection-&gt;_response.<span class="built_in">body</span>()) &lt;&lt; jsonstr;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>整个过程客户端通过 HTTP 请求发送 email，服务器调用 gRPC 客户端通过 email 请求验证码，最后将响应返回给客户端。</p>
+</blockquote>
+<h1 id="nodejs验证服务"><a href="#nodejs验证服务" class="headerlink" title="nodejs验证服务"></a>nodejs验证服务</h1><p><img src="https://cdn.jsdelivr.net/gh/Linff214/picodemo/img/25f701bb542f49eca382f89ebd9eb1b4.jpeg" alt="在这里插入图片描述"><br>grpc服务器启动，邮件成功发送<br><img src="https://i-blog.csdnimg.cn/direct/7518be1bf32e42d2884c0c089ba4c6e5.png" alt="在这里插入图片描述"><br><img src="https://cdn.jsdelivr.net/gh/Linff214/picodemo/img/81137ba7b1b34115890f7252c743ee6e.png" alt="在这里插入图片描述"><br><img src="https://cdn.jsdelivr.net/gh/Linff214/picodemo/img/2c540d3ad85c47b197fc74fcb06fb1a7.png" alt="在这里插入图片描述"></p>
+<p>验证码的过期失效通过redis服务来设置</p>
+<blockquote>
+<p>gateserver实际上是通过boost实现的网络库，提供http的服务</p>
+</blockquote>
+<h1 id="关于此节的思考："><a href="#关于此节的思考：" class="headerlink" title="关于此节的思考："></a>关于此节的思考：</h1><p><strong>1.“为什么实现一个“获取验证码”的功能不用 HTTP&#x2F;REST 接口，用 gRPC 实现？有什么优势？”或者说为什么要用grpc通信</strong><br><img src="https://i-blog.csdnimg.cn/direct/38133df4645a4414b8f5ba27e7ba0e16.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p><strong>统一接口定义</strong>指的是：你把服务接口（函数名、参数、返回值）都写在一个 .proto 文件里，由它作为唯一标准，然后用它自动生成服务端&#x2F;客户端代码，避免手写出错。<br><strong>模块间 RPC 调用</strong>，指的是你的系统被拆成多个服务模块，它们之间通过“远程调用函数”来通信，而不是直接调用本地函数。</p>
+</blockquote>
+<p><strong>2.为什么VerifyGrpcClient要用单例模式</strong></p>
+<blockquote>
+<p>单例是一种“全局唯一客户端访问入口”的设计模式，它让你只创建一个 gRPC 客户端对象，保证连接和资源的复用，还防止你不小心创建多个对象、建立多个连接，破坏性能和逻辑一致性。</p>
+</blockquote>
+<blockquote>
+<p>虽然 stub_ 是全局唯一的共享实例，但它是线程安全的、支持并发的，不同模块可以同时调用它，不会互相影响。你只要保证每次调用用的参数是独立的，就完全没问题。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Linff214.github.io">Linff214</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linff214.github.io/2025/07/15/ChatNova%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AEgrpc%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8VerifyServer/">https://linff214.github.io/2025/07/15/ChatNova%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AEgrpc%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8VerifyServer/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Linff214.github.io" target="_blank">小林小林爱编程</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%A1%B9%E7%9B%AE3/">项目3</a></div><div class="post_share"><div class="social-share" data-image="/img/chatnova.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/06/23/ChatNova%E2%80%94%E2%80%94%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E8%AE%BE%E7%BD%AE/" title="ChatNova——登录界面设置"><img class="cover" src="/img/chatnova.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">ChatNova——登录界面设置</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/06/23/ChatNova%E2%80%94%E2%80%94%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E8%AE%BE%E7%BD%AE/" title="ChatNova——登录界面设置"><img class="cover" src="/img/chatnova.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-23</div><div class="title">ChatNova——登录界面设置</div></div></a></div><div><a href="/2025/06/23/ChatNova%E2%80%94%E2%80%94beast%E5%AE%9E%E7%8E%B0http%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="ChatNova——beast实现http服务器"><img class="cover" src="/img/chatnova.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-23</div><div class="title">ChatNova——beast实现http服务器</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81OTc3Mi8zNjIzNA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Linff214</div><div class="author-info__description">纵有疾风来，人生不言弃</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Linff214"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Linff214" target="_blank" title="Github"><i class="fab fa-github" style="color: #hdhfbb;"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #000000;"></i></a><a class="social-icon" href="/blog.Linff214.com" target="_blank" title="博客"><i class="fa-solid fa-layer-group"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Grpc%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">Grpc服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#proto%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99"><span class="toc-number">1.1.</span> <span class="toc-text">proto文件编写</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Grpc%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">2.</span> <span class="toc-text">Grpc客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#VarifyGrpcClient"><span class="toc-number">2.1.</span> <span class="toc-text">VarifyGrpcClient</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nodejs%E9%AA%8C%E8%AF%81%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.</span> <span class="toc-text">nodejs验证服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%AD%A4%E8%8A%82%E7%9A%84%E6%80%9D%E8%80%83%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">关于此节的思考：</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/15/ChatNova%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AEgrpc%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8VerifyServer/" title="ChatNova——配置grpc客户端服务器VerifyServer"><img src="/img/chatnova.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ChatNova——配置grpc客户端服务器VerifyServer"/></a><div class="content"><a class="title" href="/2025/07/15/ChatNova%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AEgrpc%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8VerifyServer/" title="ChatNova——配置grpc客户端服务器VerifyServer">ChatNova——配置grpc客户端服务器VerifyServer</a><time datetime="2025-07-15T07:55:33.000Z" title="发表于 2025-07-15 15:55:33">2025-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/23/ChatNova%E2%80%94%E2%80%94%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E8%AE%BE%E7%BD%AE/" title="ChatNova——登录界面设置"><img src="/img/chatnova.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ChatNova——登录界面设置"/></a><div class="content"><a class="title" href="/2025/06/23/ChatNova%E2%80%94%E2%80%94%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E8%AE%BE%E7%BD%AE/" title="ChatNova——登录界面设置">ChatNova——登录界面设置</a><time datetime="2025-06-22T16:28:59.000Z" title="发表于 2025-06-23 00:28:59">2025-06-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/23/ChatNova%E2%80%94%E2%80%94beast%E5%AE%9E%E7%8E%B0http%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="ChatNova——beast实现http服务器"><img src="/img/chatnova.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ChatNova——beast实现http服务器"/></a><div class="content"><a class="title" href="/2025/06/23/ChatNova%E2%80%94%E2%80%94beast%E5%AE%9E%E7%8E%B0http%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="ChatNova——beast实现http服务器">ChatNova——beast实现http服务器</a><time datetime="2025-06-22T16:28:59.000Z" title="发表于 2025-06-23 00:28:59">2025-06-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/18/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%92%8C-Git-%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83/" title="团队协作流程和 Git 使用规范">团队协作流程和 Git 使用规范</a><time datetime="2025-05-18T15:13:32.000Z" title="发表于 2025-05-18 23:13:32">2025-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/18/HOT100-%EF%BC%88%E5%93%88%E5%B8%8C-%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%89/" title="HOT100 （哈希&amp;双指针）"><img src="/img/%E5%93%88%E5%B8%8C&amp;%E5%8F%8C%E6%8C%87%E9%92%88.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HOT100 （哈希&amp;双指针）"/></a><div class="content"><a class="title" href="/2025/05/18/HOT100-%EF%BC%88%E5%93%88%E5%B8%8C-%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%89/" title="HOT100 （哈希&amp;双指针）">HOT100 （哈希&amp;双指针）</a><time datetime="2025-05-18T15:06:53.000Z" title="发表于 2025-05-18 23:06:53">2025-05-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Linff214</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><img class="icp-icon" src= "/img/头像.jpg"><span>欢迎来到我的博客😈</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(()=>{
+  const loadLivere = () => {
+    if (typeof LivereTower === 'object') window.LivereTower.init()
+    else {
+      (function(d, s) {
+          var j, e = d.getElementsByTagName(s)[0];
+          if (typeof LivereTower === 'function') { return; }
+          j = d.createElement(s);
+          j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+          j.async = true;
+          e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    }
+  }
+
+  if ('Livere' === 'Livere' || !false) {
+    if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+    else loadLivere()
+  } else {
+    window.loadOtherComment = loadLivere
+  }
+})()</script></div><script async data-pjax src="/js/essay.js"></script><script async data-pjax src="/js/waterfall.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
